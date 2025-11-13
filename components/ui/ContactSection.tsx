@@ -48,7 +48,7 @@ const ContactSection = () => {
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative max-w-6xl mx-auto px-6 md:px-12 bg-gradient-to-r from-red-900 via-red-800 to-red-700 rounded-3xl shadow-2xl text-white py-10 md:py-12 flex flex-col-reverse md:flex-row gap-8"
+        className="relative max-w-6xl mx-auto px-6 md:px-12 bg-gradient-to-r from-red-600 via-red-700 to-red-700 rounded-3xl shadow-2xl text-white py-10 md:py-12 flex flex-col-reverse md:flex-row gap-8"
       >
         {/* Text Section */}
         <motion.div

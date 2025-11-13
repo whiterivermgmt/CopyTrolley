@@ -20,4 +20,5 @@ export const headerData = [
      },
     { title: "Financing", href: "/financing" },
     { title: "Contact", href: "/contact" },
+    { title: "Visualizer", href: "/visualizer" },
 ]

@@ -1,6 +1,7 @@
 "use client";
 
 import Container from '@/components/ui/Container';
+import QuickEstimate from '@/components/ui/QuickEstimate';
 import React, { useState } from 'react';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
@@ -98,7 +99,9 @@ const FAQPage = () => {
           </div>
         ))}
       </div>
+                <QuickEstimate />
     </Container>
+    
   );
 };
 

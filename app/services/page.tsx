@@ -4,6 +4,7 @@ import React from "react";
 import HeroBanner from "@/components/ui/HeroBanner";
 import Container from "@/components/ui/Container";
 import OurServices from "@/components/ui/OurServices";
+import QuickEstimate from "@/components/ui/QuickEstimate";
 
 const ServicesPage = () => {
   return (
@@ -26,6 +27,7 @@ const ServicesPage = () => {
           headerSubtitle="We specialize in roofing, siding, gutters, and general home repairs to keep your property safe, functional, and beautiful."
         />
       </Container>
+      <QuickEstimate />
     </>
   );
 };

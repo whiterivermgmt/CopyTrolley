@@ -6,6 +6,7 @@ import HeroBanner from "@/components/ui/HeroBanner";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Reviews from "@/components/ui/Reviews"; 
+import QuickEstimate from "@/components/ui/QuickEstimate";
 
 // About sections
 const sections = [
@@ -95,6 +96,7 @@ export default function AboutPage() {
 
       {/* Testimonials / Reviews Component */}
       <Reviews />
+                <QuickEstimate />
 
     </div>
   );

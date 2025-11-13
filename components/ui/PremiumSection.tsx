@@ -61,7 +61,7 @@ const PremiumSection = () => {
           {/* CTA Button */}
           <motion.a
             href="/financing"
-            className="inline-block bg-linear-to-r from-red-800 to-red-600 text-white font-bold rounded-2xl text-lg px-8 py-4 shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300"
+            className="inline-block bg-linear-to-r from-red-700 to-red-600 text-white font-bold rounded-2xl text-lg px-8 py-4 shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}

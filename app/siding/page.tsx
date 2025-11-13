@@ -6,6 +6,7 @@ import HeroBanner from "@/components/ui/HeroBanner";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Reviews from "@/components/ui/Reviews";
+import QuickEstimate from "@/components/ui/QuickEstimate";
 
 const sidingSections = [
   {
@@ -91,6 +92,7 @@ export default function SidingPage() {
 
       {/* Testimonials / Reviews */}
       <Reviews />
+      <QuickEstimate />
     </div>
   );
 }

@@ -6,6 +6,8 @@ import HeroBanner from "@/components/ui/HeroBanner";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Reviews from "@/components/ui/Reviews";
+import Script from "next/script";
+import QuickEstimate from "@/components/ui/QuickEstimate";
 
 const roofingSections = [
   {
@@ -88,9 +90,8 @@ export default function RoofingPage() {
           </div>
         </Container>
       </section>
-
-      {/* Testimonials / Reviews */}
-      <Reviews />
+ <Reviews />
+                        <QuickEstimate />
     </div>
   );
 }

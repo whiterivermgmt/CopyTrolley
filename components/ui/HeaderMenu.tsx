@@ -21,7 +21,7 @@ const HeaderMenu = () => {
             <Link
               href={item.href}
               className={`relative flex items-center gap-1 transition-colors duration-300 ${
-                isActive ? "text-shop-orange" : "text-black hover:text-shop-orange"
+                isActive ? "text-linear-to-r from-red-600 via-red-700 to-red-700" : "text-black hover:text-shop-orange"
               }`}
             >
               <span className="whitespace-nowrap">{item.title}</span>

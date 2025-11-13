@@ -23,11 +23,12 @@ const SocialMediaHeader = () => {
   ];
 
   return (
-    <div className="w-full z-100 backdrop-blur-md">
-      <div className="w-full bg-linear-to-r from-red-900 via-red-900 to-red-800/90 shadow-md">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:justify-end gap-2 md:gap-4 px-6 py-2 text-white">
-          {/* Consultation Text + Phone */}
-          <div className="flex flex-col md:flex-row items-center gap-1 md:gap-4 text-center md:text-left font-semibold">
+    <div className="w-full z-50 backdrop-blur-md">
+      <div className="w-full bg-gradient-to-r from-red-600 via-red-700 to-red-700/90 shadow-md">
+        <div className="max-w-7xl mx-auto flex flex-row items-center justify-between gap-2 px-6 py-2 text-white">
+          
+          {/* Left Side: Schedule + Phone */}
+          <div className="flex flex-col sm:flex-col md:flex-row items-start md:items-center gap-1 md:gap-4 font-semibold text-left">
             <span>Schedule a Consultation</span>
             <a
               href="tel:8125831318"
@@ -37,11 +38,8 @@ const SocialMediaHeader = () => {
             </a>
           </div>
 
-          {/* Divider (only on md+) */}
-          <span className="hidden md:inline font-bold">|</span>
-
-          {/* Social Icons */}
-          <div className="flex gap-3 justify-center md:justify-start mt-2 md:mt-0">
+          {/* Right Side: Social Icons */}
+          <div className="flex gap-3 items-center">
             {socials.map((social, idx) => (
               <div key={idx} className="relative group flex flex-col items-center">
                 <a

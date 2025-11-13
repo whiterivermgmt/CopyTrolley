@@ -15,7 +15,7 @@ const Logo = () => {
         className="flex items-center justify-start w-fit origin-left hover:scale-105 transition-transform duration-300"
       >
         <Image
-          src="/logo/logo.png"
+          src="/logo/logo4.png"
           alt="Gerkin Construction Logo"
           width={240} // slightly larger base width
           height={80}

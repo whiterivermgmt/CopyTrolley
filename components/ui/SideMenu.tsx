@@ -137,7 +137,7 @@ const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-red-700 hover:text-red-900 cursor-pointer transition-colors duration-300 p-3 rounded-full bg-white/90 shadow-md"
+                  className="text-red-600 hover:text-red-700 cursor-pointer transition-colors duration-300 p-3 rounded-full bg-white/90 shadow-md"
                 >
                   {React.cloneElement(item.icon, { className: "w-6 h-6" })}
                 </a>
@@ -151,7 +151,7 @@ const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
           {/* Logo with onClose */}
           <Link href="/" onClick={onClose}>
             <Image
-              src="/logo/logofooter.png"
+              src="/logo/logo2.png"
               alt="Footer Logo"
               width={160}
               height={80}

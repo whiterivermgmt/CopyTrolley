@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import QuickEstimate from "@/components/ui/QuickEstimate";
 
 const galleryItems = [
   "/gallery/gallery1.jpg",
@@ -121,6 +122,7 @@ export default function GalleryPage() {
           </motion.div>
         )}
       </AnimatePresence>
+                <QuickEstimate />
     </div>
   );
 }
