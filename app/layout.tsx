@@ -4,7 +4,7 @@ import  Header  from "@/components/ui/Header";
 import Footer from "@/components/ui/Footer";
 import HeroBanner from "@/components/ui/HeroBanner";
 import SocialMediaHeader from "@/components/ui/SocialMediaHeader";
-
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title: {
@@ -26,6 +26,7 @@ export default function RootLayout({
        <Header />
         {children}
         <Footer />
+         <Analytics />
       </body>
     </html>
   );
