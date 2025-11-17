@@ -175,10 +175,14 @@ const Footer = () => {
           <div className="border-t border-gray-800 py-6 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-200">
             <p>© {new Date().getFullYear()} Gerkin Construction</p>
             <p>
-              Designed by{" "}
-              <span className="font-medium text-white hover:text-red-400 transition-colors">
-                White River Media
-              </span>
+               Designed by{" "}
+          <Link
+             href="https://whiteriver.media"
+             target="_blank"
+             rel="noopener noreferrer"
+              className="font-medium text-white hover:text-red-400 transition-colors" >
+                     White River Media
+         </Link>
             </p>
           </div>
         </Container>

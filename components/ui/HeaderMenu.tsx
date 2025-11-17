@@ -7,37 +7,41 @@ import React from "react";
 import { ChevronDown } from "lucide-react";
 import DropdownMenu from "./DropdownMenu";
 
-const HeaderMenu = () => {
+type HeaderMenuProps = {
+  side?: "left" | "right";
+};
+
+const HeaderMenu: React.FC<HeaderMenuProps> = ({ side }) => {
   const pathName = usePathname();
 
+  const filteredMenu = side
+    ? headerData.filter((item) => item.side === side)
+    : headerData;
+
   return (
-    <nav className="hidden md:flex flex-wrap items-center justify-center gap-6 text-base md:text-lg font-semibold text-black relative">
-      {headerData?.map((item, index) => {
+    <nav className="hidden md:flex items-center gap-4 relative">
+      {filteredMenu.map((item, index) => {
         const isActive = pathName === item.href;
         const hasSubmenu = !!item.submenu;
 
         return (
-          <div key={item.title} className="relative group flex items-center min-w-[70px]">
+          <div key={item.title} className="relative group flex items-center">
             <Link
               href={item.href}
-              className={`relative flex items-center gap-1 transition-colors duration-300 ${
-                isActive ? "text-linear-to-r from-red-600 via-red-700 to-red-700" : "text-black hover:text-shop-orange"
-              }`}
+              className={`
+                relative flex items-center gap-1 px-2 py-1 border-b-2 border-transparent
+                hover:border-red-800 transition-colors duration-300
+                text-black font-bold text-lg
+              `}
             >
               <span className="whitespace-nowrap">{item.title}</span>
               {hasSubmenu && (
-                <ChevronDown className="w-3 h-3 mt-0.5 transition-transform duration-300 group-hover:rotate-180" />
+                <ChevronDown className="w-4 h-4 mt-0.5 text-red-800 transition-transform duration-300 group-hover:rotate-180" />
               )}
-              {/* Underline */}
-              <span
-                className={`absolute -bottom-1 h-0.5 w-full bg-shop-orange transition-transform origin-left ${
-                  isActive ? "scale-x-100" : "scale-x-0"
-                } group-hover:scale-x-100`}
-              ></span>
             </Link>
 
             {hasSubmenu && (
-              <div className="absolute top-full left-0 w-screen">
+              <div className="absolute top-full left-0 w-screen z-50">
                 <DropdownMenu parentIndex={index} menuTitle={item.title} />
               </div>
             )}
