@@ -1,13 +1,12 @@
 "use client";
 
-import React, { FC, useState } from "react";
-import { headerData } from "@/Constants/data";
+import React, { FC, useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { X, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { SiFacebook, SiGoogle, SiYelp } from "react-icons/si";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { headerData } from "@/Constants/data";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -15,18 +14,42 @@ interface SidebarProps {
 }
 
 const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
-  const pathName = usePathname();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
+  const pathName = usePathname();
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const toggleSubmenu = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  // Auto-close on screen resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768 && isOpen) {
+        handleClose();
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [isOpen]);
+
+  const handleClose = () => {
+    onClose();
+    setOpenIndex(null); // Reset submenu whenever sidebar closes
+  };
+
   const socialLinks = [
-    { href: "https://www.facebook.com/p/Gerkin-Construction-LLC-100093552122319/", icon: <SiFacebook />, name: "Facebook" },
-    { href: "https://www.google.com/search?q=gerkin+construction", icon: <SiGoogle />, name: "Google Reviews" },
-    { href: "https://www.yelp.com/biz/gerkin-construction-llc-bedford", icon: <SiYelp />, name: "Yelp" },
+    { href: "https://www.facebook.com/p/Copy-Trolley-100063464026096/", icon: <SiFacebook />, name: "Facebook" },
+    { href: "https://www.google.com/search?q=copy+trolley", icon: <SiGoogle />, name: "Google Reviews" },
+    { href: "https://www.yelp.com/biz/copy-trolley-bedford", icon: <SiYelp />, name: "Yelp" },
   ];
+
+  if (!isMounted) return null;
 
   return (
     <>
@@ -39,14 +62,14 @@ const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            onClick={onClose}
+            onClick={handleClose}
           />
         )}
       </AnimatePresence>
 
       {/* Sidebar */}
       <motion.div
-        className="fixed top-0 left-0 h-full w-72 bg-white/95 backdrop-blur-md z-50 shadow-2xl rounded-r-3xl flex flex-col justify-between"
+        className="fixed top-0 left-0 h-full w-72 z-50 shadow-2xl flex flex-col justify-between rounded-r-3xl bg-[#383838]"
         initial={{ x: "-100%" }}
         animate={{ x: isOpen ? 0 : "-100%" }}
         transition={{ type: "spring", stiffness: 200, damping: 25 }}
@@ -54,72 +77,80 @@ const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
         {/* Close Button */}
         <div className="flex justify-end p-4">
           <motion.button
-            onClick={onClose}
+            onClick={handleClose}
             whileHover={{ rotate: 90, scale: 1.15 }}
-            className="text-red-600 hover:text-red-800 p-3 rounded-full transition-all duration-300 shadow-sm bg-white/80 cursor-pointer"
+            className="text-red-600 hover:text-red-800 p-3 rounded-full transition-all duration-300 shadow-sm bg-gray-100/80 cursor-pointer"
           >
-            <X className="w-7 h-7" />
+            <ChevronDown className="w-7 h-7 rotate-45" />
           </motion.button>
         </div>
 
         {/* Menu Items */}
-        <nav className="flex flex-col gap-4 px-6 mt-4 overflow-y-auto">
+        <nav className="flex flex-col gap-3 px-4 mt-2 overflow-y-auto">
           {headerData.map((item, idx) => {
-            const isActive = pathName === item.href;
             const hasSubmenu = item.submenu && item.submenu.length > 0;
+            const isActive = pathName === item.href;
 
             return (
               <div key={item.title} className="w-full">
-                {hasSubmenu ? (
-                  <div
-                    className={`flex justify-between items-center w-full px-4 py-4 text-lg font-semibold rounded-lg cursor-pointer transition-colors duration-300 ${
-                      isActive
-                        ? "bg-red-100 text-red-700"
-                        : "hover:bg-red-50 hover:text-red-700"
-                    }`}
-                    onClick={() => toggleSubmenu(idx)}
-                  >
-                    <span className="text-lg">{item.title}</span>
-                    <ChevronDown
-                      className={`w-5 h-5 transition-transform duration-300 ${
-                        openIndex === idx ? "rotate-180" : "rotate-0"
-                      }`}
-                    />
-                  </div>
-                ) : (
-                  <Link href={item.href} onClick={onClose}>
-                    <div
-                      className={`flex justify-between items-center w-full px-4 py-4 text-lg font-semibold rounded-lg cursor-pointer transition-colors duration-300 ${
-                        isActive
-                          ? "bg-red-100 text-red-700"
-                          : "hover:bg-red-50 hover:text-red-700"
-                      }`}
+                {/* Main item */}
+                <div
+                  className={`flex justify-between items-center w-full px-5 py-4 text-xl font-bold rounded-[28px] cursor-pointer transition-colors duration-200
+                    ${isActive ? "bg-[#f6efe5] text-[#c21a1a]" : "text-white"}
+                    group hover:bg-[#f6efe5] hover:text-[#c21a1a"]`}
+                  onClick={() => {
+                    if (hasSubmenu) toggleSubmenu(idx);
+                    else handleClose();
+                  }}
+                >
+                  {hasSubmenu ? (
+                    <span className={`transition-colors duration-200 ${isActive ? "text-[#c21a1a]" : "group-hover:text-[#c21a1a]"}`}>
+                      {item.title}
+                    </span>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className={`w-full transition-colors duration-200 ${isActive ? "text-[#c21a1a]" : "group-hover:text-[#c21a1a]"}`}
+                      onClick={handleClose}
                     >
-                      <span className="text-lg">{item.title}</span>
-                    </div>
-                  </Link>
-                )}
+                      {item.title}
+                    </Link>
+                  )}
+                  {hasSubmenu && (
+                    <ChevronDown
+                      className={`w-5 h-5 transition-transform duration-200
+                        ${openIndex === idx || isActive ? "rotate-180 text-[#c21a1a]" : "text-white"}`}
+                    />
+                  )}
+                </div>
 
-                {/* Submenu Animation */}
+                {/* Submenu */}
                 <AnimatePresence>
                   {hasSubmenu && openIndex === idx && (
                     <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
-                      className="flex flex-col ml-4 mt-2 gap-2"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex flex-col ml-2 mt-2 gap-2"
                     >
-                      {item.submenu.map((sub) => (
-                        <Link
-                          key={sub.title}
-                          href={sub.href}
-                          onClick={onClose}
-                          className="px-4 py-3 text-gray-700 rounded-lg hover:bg-red-50 hover:text-red-700 transition-all duration-300 text-lg"
-                        >
-                          {sub.title}
-                        </Link>
-                      ))}
+                      {item.submenu.map(sub => {
+                        const isSubActive = pathName === sub.href;
+                        return (
+                          <Link
+                            key={sub.title}
+                            href={sub.href}
+                            onClick={handleClose}
+                            className={`px-5 py-3 rounded-[28px] text-lg font-semibold transition-colors duration-200
+                              ${isSubActive ? "bg-[#f6efe5] text-[#c21a1a]" : "text-white"}
+                              hover:bg-[#f6efe5] hover:text-[#c21a1a"]`}
+                          >
+                            <span className={`${isSubActive ? "text-[#c21a1a]" : "hover:text-[#c21a1a]"} transition-colors duration-200`}>
+                              {sub.title}
+                            </span>
+                          </Link>
+                        );
+                      })}
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -128,36 +159,23 @@ const SideMenu: FC<SidebarProps> = ({ isOpen, onClose }) => {
           })}
         </nav>
 
-        {/* Footer Social + Logo */}
-        <div className="flex flex-col items-center gap-6 mb-8">
-          <div className="flex gap-4">
-            {socialLinks.map((item, idx) => (
-              <div key={idx} className="relative group flex flex-col items-center">
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-red-600 hover:text-red-700 cursor-pointer transition-colors duration-300 p-3 rounded-full bg-white/90 shadow-md"
-                >
-                  {React.cloneElement(item.icon, { className: "w-6 h-6" })}
-                </a>
-                <span className="absolute -top-8 text-xs bg-white text-black px-2 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                  {item.name}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {/* Logo with onClose */}
-          <Link href="/" onClick={onClose}>
-            <Image
-              src="/logo/logo2.png"
-              alt="Footer Logo"
-              width={160}
-              height={80}
-              className="object-contain cursor-pointer transition-transform duration-300 hover:scale-105"
-            />
-          </Link>
+        {/* Social Links */}
+        <div className="flex justify-center gap-4 p-4">
+          {socialLinks.map((item, idx) => (
+            <div key={idx} className="relative group">
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-12 h-12 rounded-full bg-red-600 shadow-md hover:bg-red-700 transition-colors duration-200"
+              >
+                {React.cloneElement(item.icon, { className: "w-6 h-6 text-white" })}
+              </a>
+              <span className="absolute -top-10 left-1/2 -translate-x-1/2 text-xs bg-white text-black px-3 py-1 rounded shadow opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                {item.name}
+              </span>
+            </div>
+          ))}
         </div>
       </motion.div>
     </>

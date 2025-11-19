@@ -8,8 +8,8 @@ import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title: {
-    template: "%s - Gerkin Construction",
-    default: "Gerkin Construction",
+    template: "%s - Copy Trolley",
+    default: "Copy Trolley",
 },
 description: "Gerkin Construction expert roofing, gutters, siding & repairs for homes and businesses. Reliable, quality service you can trust."
 };
@@ -22,11 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-poppins antialiased`}>
-        <SocialMediaHeader />
        <Header />
         {children}
         <Footer />
-         <Analytics />
       </body>
     </html>
   );

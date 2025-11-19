@@ -15,11 +15,11 @@ const Logo = () => {
         className="flex items-center justify-start w-fit origin-left hover:scale-105 transition-transform duration-300"
       >
         <Image
-          src="/logo/logo4.png"
+          src="/logo/logo5.png"
           alt="Gerkin Construction Logo"
-          width={240} // slightly larger base width
+          width={240}
           height={80}
-          className="w-[120px] sm:w-[160px] md:w-[200px] lg:w-[240px] h-auto" // responsive scaling
+          className="w-[100px] sm:w-[130px] md:w-[140px] lg:w-[160px] h-auto"
           priority
         />
       </motion.div>

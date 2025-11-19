@@ -5,8 +5,7 @@ import Container from "./Container";
 import Logo from "./Logo";
 import HeaderMenu from "./HeaderMenu";
 import SideMenu from "./SideMenu";
-import Contactbutton from "./Contactbutton";
-import { AlignLeft, Phone, Calendar } from "lucide-react";
+import { AlignLeft, Phone } from "lucide-react";
 
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -16,39 +15,25 @@ const Header = () => {
       <header className="w-full sticky top-0 z-40 bg-white/90 backdrop-blur-md shadow-md transition-all duration-300">
 
         {/* Desktop Header */}
-        <Container fullWidth className="hidden md:flex items-end justify-between py-4 h-[120px] lg:px-16">
+        <Container fullWidth className="hidden md:flex items-center justify-between py-4 h-[120px] lg:px-16">
           
-          {/* Left side CTA + Menu */}
-          <div className="flex flex-col justify-end items-start">
-            <div
-              className="flex items-center gap-2 text-red-800 font-bold text-lg cursor-pointer mb-1"
-              onClick={() => window.location.href="#contact"}
-            >
-              <Calendar className="w-5 h-5 text-red-800" />
-              Request Appointment
-            </div>
-            <div className="flex space-x-6">
-              <HeaderMenu side="left" />
-            </div>
-          </div>
-
-          {/* Center Logo */}
-          <div className="flex justify-center h-full">
+          {/* Left: Logo */}
+          <div className="flex items-center h-full">
             <Logo />
           </div>
 
-          {/* Right side CTA + Menu */}
-          <div className="flex flex-col justify-end items-end">
-            <div
-              className="flex items-center gap-2 text-red-800 font-bold text-lg cursor-pointer mb-1"
-              onClick={() => window.location.href="tel:8125831318"}
-            >
-              <Phone className="w-5 h-5 text-red-800" />
-              Call Today
-            </div>
-            <div className="flex space-x-6">
-              <HeaderMenu side="right" />
-            </div>
+          {/* Center: Menu */}
+          <div className="flex justify-center items-center space-x-6">
+            <HeaderMenu />
+          </div>
+
+          {/* Right: Call Today */}
+          <div
+            className="flex items-center gap-2 text-red-800 font-bold text-lg cursor-pointer"
+            onClick={() => window.location.href="tel:8125831318"}
+          >
+            <Phone className="w-5 h-5 text-red-800" />
+            Call Today
           </div>
 
         </Container>
@@ -69,10 +54,15 @@ const Header = () => {
             <AlignLeft className="w-6 h-6" />
           </div>
 
-          {/* Contact button right */}
-          <div className="shrink-0">
-            <Contactbutton />
+          {/* Right: Call Today (replacing Contactbutton) */}
+          <div
+            className="shrink-0 flex items-center gap-1 text-red-800 font-bold text-md cursor-pointer"
+            onClick={() => window.location.href="tel:8125831318"}
+          >
+            <Phone className="w-5 h-5 text-red-800" />
+            Call Today
           </div>
+
         </div>
 
       </header>
