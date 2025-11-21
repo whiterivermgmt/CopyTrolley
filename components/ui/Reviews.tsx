@@ -6,34 +6,34 @@ import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 
 const testimonials = [
   {
-    name: "Gregg Hammond",
+    name: "Sabrina Walters",
     stars: 5,
-    text: "Highly recommend Gerkin Construction!!! A few months ago we had some storm damage to our roof and they came out immediately and did a temporary fix. My roof was about 22 years old and we needed a new one. Very competitive price and excellent workmanship! The crew was excellent!!! Cleaned up everything!!!! Very Satisfied!!!",
-    link: "https://share.google/T42FWRAZgXclGKBgO",
+    text: ". I was unprepared when i got there and they went above and beyond to help me and made it so easy for me. Mike even brought me tissues as i tend to cry everywhere i go these days. I want to thank Mike for his kindness and compassion and i highly recommend this place to everyone that wants a great shipping experience.",
+    link: "https://share.google/0XHBN7iuWqQDpcq0j",
   },
   {
-    name: "Maria Leal",
+    name: "Teresa Folk",
     stars: 5,
-    text: "Gerkin construction had replaced my daughter’s roof due to a tree damaging it, when my roof had a tree from storms go through my garage my son in law said call Gerkin they were fantastic!",
-    link: "https://share.google/KzGPAtAPrJn7EwtRJ",
+    text: "Polite and very accommodating. Had a last minute item needed for a memorial service and they went out of their way to ensure I got it in time. Highly recommend.",
+    link: "https://share.google/AX3p42EwiKVCCcHYt",
   },
   {
-    name: "Chelsey Wyatt",
+    name: "Donald Pritchard",
     stars: 5,
-    text: "We used them for a new roof, siding & gutters. We couldn’t be happier with the end product! Very polite & answered all the questions we had as first time roof and siding buyers. 😊",
-    link: "https://share.google/ta1C3bVIoihCue5xM",
+    text: "Very helpful number one on customer service good parking ok good service.",
+    link: "https://share.google/Ccv5oMqXre23oY3G2",
   },
   {
-    name: "James Sanders",
+    name: "April Sears",
     stars: 5,
-    text: "Dan and his crew did a great job with my roof. They tore off the old roofing and replaced it in just a little over one day. They did a great job with clean up after the project was completed. I would highly recommend Gerkin Construction!!",
-    link: "https://share.google/CzvdixNp34XinjvfO",
+    text: "Copy trolly is awesome this is where I go for all my business needs ",
+    link: "https://share.google/zHJlgRTFdBXn43TUB",
   },
   {
-    name: "Jon Cochran",
+    name: "Tiffany Cruz",
     stars: 5,
-    text: "Gerkin Construction is a great company to work with. Marc Porter is very fast at getting things done for you even after hours if needed. He got me a new roof and gutters from noticing more damage on my roof and gutters than any other company did.",
-    link: "https://share.google/2itcgSP8bWGOKpaWk",
+    text: "love this place, I wonder if they print documents for you off your phone..",
+    link: "https://share.google/cuz5MYHKFLvWNlNUH",
   },
 ];
 

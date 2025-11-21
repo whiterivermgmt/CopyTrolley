@@ -6,16 +6,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import QuickEstimate from "@/components/ui/QuickEstimate";
 
 const galleryItems = [
-  "/gallery/gallery1.jpg",
-  "/gallery/gallery2.jpg",
-  "/gallery/gallery3.jpg",
-  "/gallery/gallery4.jpg",
-  "/gallery/gallery5.jpg",
-  "/gallery/gallery6.jpg",
-  "/gallery/gallery7.jpg",
-  "/gallery/gallery8.jpg",
-  "/gallery/gallery9.jpg",
-  "/gallery/gallery10.jpg",
+  "/locations/image.jpg",
+  "/locations/image2.jpg",
+  "/locations/image3.jpg",
+  "/locations/image4.jpg",
 ];
 
 export default function GalleryPage() {
@@ -122,7 +116,6 @@ export default function GalleryPage() {
           </motion.div>
         )}
       </AnimatePresence>
-                <QuickEstimate />
     </div>
   );
 }

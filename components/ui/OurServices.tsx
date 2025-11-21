@@ -22,53 +22,93 @@ interface ServicesSectionProps {
   services?: Service[];
 }
 
-const defaultServices: Service[] = [
+const copyTrolleyServices: Service[] = [
   {
-    title: "Roofing",
-    image: "/gallery/gallery1.jpg",
+    title: "Blueprints & Technical Printing",
+    image: "/services/blueprint1.jpg",
     description:
-      "Expert roofing services for residential and commercial properties. We handle installations, replacements, and roof repairs with precision and care.",
+      "High-quality blueprint printing for architects, engineers, and construction professionals.",
     buttons: [
-      { text: "New Roofs", href: "/roofing", variant: "red" },
-      { text: "Roof Repairs", href: "/roofing", variant: "gray" },
+      { text: "Blueprint Options", href: "/services/blueprints", variant: "red" },
+      { text: "CAD Printing", href: "/services/blueprints", variant: "gray" },
     ],
   },
   {
-    title: "Siding",
-    image: "/gallery/gallery2.jpg",
+    title: "Large Format Printing",
+    image: "/services/printer.jpg",
     description:
-      "Protect your home with high-quality siding installations. We offer vinyl, James Hardie, and custom siding solutions for every home.",
+      "Banners, posters, trade show displays, and more for businesses and events.",
     buttons: [
-      { text: "Vinyl Siding", href: "/siding", variant: "red" },
-      { text: "Siding Repairs", href: "/siding", variant: "gray" },
+      { text: "Banners", href: "/services/large-format", variant: "red" },
+      { text: "Posters", href: "/services/large-format", variant: "gray" },
     ],
   },
   {
-    title: "Gutters",
-    image: "/services/gutter.webp",
+    title: "Copy & Print",
+    image: "/services/copy.jpg",
     description:
-      "Keep your home safe from water damage with professionally installed and maintained gutter systems. Seamless gutters, downspouts, and repairs.",
+      "Fast and professional copying, black & white or color, for documents of all sizes.",
     buttons: [
-      { text: "New Gutters", href: "/gutters", variant: "red" },
-      { text: "Gutter Repairs", href: "/gutters", variant: "gray" },
+      { text: "Copy Services", href: "/services/copyprint", variant: "red" },
+      { text: "Print Options", href: "/services/copyprint", variant: "gray" },
     ],
   },
   {
-    title: "Repairs",
-    image: "/gallery/gallery4.jpg",
+    title: "Graphic Design",
+    image: "/services/graphic.jpg",
     description:
-      "Comprehensive home repair services including roof patching, siding fixes, and general exterior maintenance to keep your property in top shape.",
+      "Creative design solutions for logos, branding, marketing materials, and digital media.",
     buttons: [
-      { text: "Roof Repairs", href: "/repairs", variant: "red" },
-      { text: "Siding Repairs", href: "/repairs", variant: "gray" },
+      { text: "Design Services", href: "/services/graphic-design", variant: "red" },
+      { text: "Illustrations", href: "/services/graphic-design", variant: "gray" },
+    ],
+  },
+  {
+    title: "Photo Restoration",
+    image: "/services/repair.jpg",
+    description:
+      "Professional photo restoration, retouching, and digital enhancements.",
+    buttons: [
+      { text: "Restore Photos", href: "/services/photo-restoration", variant: "red" },
+      { text: "Retouch & Edit", href: "/services/photo-restoration", variant: "gray" },
+    ],
+  },
+  {
+    title: "Signs",
+    image: "/services/banner.jpg",
+    description:
+      "Custom signs for businesses, events, or personal use with vibrant, durable prints.",
+    buttons: [
+      { text: "Custom Signs", href: "/services/signs", variant: "red" },
+      { text: "Sign Options", href: "/services/signs", variant: "gray" },
+    ],
+  },
+  {
+    title: "Banners",
+    image: "/services/banner1.jpg",
+    description:
+      "Large banners for events, advertising, and promotions in various materials and sizes.",
+    buttons: [
+      { text: "Event Banners", href: "/services/banners", variant: "red" },
+      { text: "Promotional Banners", href: "/services/banners", variant: "gray" },
+    ],
+  },
+  {
+    title: "Shipping & Packaging",
+    image: "/services/machine.jpg",
+    description:
+      "Reliable shipping, packaging, and mailing services for your business or personal needs.",
+    buttons: [
+      { text: "Ship Packages", href: "/services/shipping", variant: "red" },
+      { text: "Packaging Solutions", href: "/services/shipping", variant: "gray" },
     ],
   },
 ];
 
 const ServicesSection: React.FC<ServicesSectionProps> = ({
   headerTitle = "OUR SERVICES",
-  headerSubtitle = "Gerkins Construction provides expert exterior services for homes and businesses.",
-  services = defaultServices,
+  headerSubtitle = "Copy Trolley provides professional printing, design, and shipping services to meet all your business and personal needs.",
+  services = copyTrolleyServices,
 }) => {
   return (
     <section className="bg-gray-50 py-16">
@@ -111,7 +151,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({
                         href={btn.href}
                         className={`flex-1 px-5 py-3 rounded-lg text-sm font-semibold text-white text-center transition-all duration-300 whitespace-nowrap ${
                           btn.variant === "red"
-                            ? "bg-linear-to-r from-red-700 to-red-500 hover:opacity-90"
+                            ? "bg-gradient-to-r from-red-700 to-red-500 hover:opacity-90"
                             : "bg-gray-400 hover:bg-gray-500"
                         }`}
                         onClick={(e) => e.stopPropagation()} // Prevent card click from overriding button

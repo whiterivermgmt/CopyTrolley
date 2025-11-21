@@ -7,64 +7,68 @@ import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 const faqs = [
   {
-    question: "What types of roofing services do you offer?",
-    answer: "We provide roof repairs, full roof replacements, inspections, maintenance, and emergency services for asphalt shingles, metal roofs, and more."
+    question: "What types of services do you offer?",
+    answer: "We provide printing, shipping, graphic design, promotional products, signs, banners, and more."
   },
   {
-    question: "How long does a typical roof replacement take?",
-    answer: "Depending on the size and complexity, a roof replacement usually takes 1–5 days. Weather conditions may extend this timeline."
+    question: "Do you offer free estimates?",
+    answer: "Yes, all our estimates are free. We will evaluate your project and provide a detailed written quote."
   },
   {
-    question: "Do you offer gutter installation and repair?",
-    answer: "Yes! We install new gutters, repair leaks, clean and maintain existing gutters, and provide gutter guard solutions."
+    question: "How can I submit my print files?",
+    answer: "Files can be uploaded through our website, emailed, or delivered in person at our store locations."
   },
   {
-    question: "Are your roofing services covered by a warranty?",
-    answer: "Absolutely. We provide manufacturer warranties on materials and a workmanship warranty to ensure long-lasting protection."
+    question: "What are your business hours?",
+    answer: "Bedford: M-F 9am - 5:30pm. Paoli: M-F 9am - 4pm. Closed on weekends."
   },
   {
-    question: "Do you provide free estimates?",
-    answer: "Yes, all our estimates are free. We will evaluate your home, discuss your needs, and provide a detailed written estimate."
+    question: "Do you offer design services?",
+    answer: "Absolutely! Our graphic design team can create logos, layouts, and promotional materials tailored to your brand."
   },
   {
-    question: "What areas do you service?",
-    answer: "We primarily service Bedford, IN, and the surrounding areas. Contact us to check if we cover your location."
+    question: "Can I ship packages through Copy Trolley?",
+    answer: "Yes, we offer convenient FedEx shipping services for both personal and business needs."
   },
   {
-    question: "How do I know if my roof needs repair or replacement?",
-    answer: "Common signs include missing shingles, leaks, sagging areas, and age of the roof. We provide inspections to determine the best solution."
+    question: "Do you provide promotional products?",
+    answer: "Yes, we offer a wide range of branded promotional items including apparel, pens, mugs, and more."
   },
   {
-    question: "Do you handle insurance claims for storm damage?",
-    answer: "Yes, we assist homeowners with insurance claims, including inspections, documentation, and working directly with insurance adjusters."
+    question: "How quickly can I receive my order?",
+    answer: "Turnaround time depends on the service and volume. Standard printing is often same-day or next-day; custom projects vary."
   },
   {
-    question: "Can I choose my roofing materials and colors?",
-    answer: "Absolutely! We offer a variety of materials, colors, and styles to match your home’s aesthetics and budget."
+    question: "Do you offer large format printing?",
+    answer: "Yes, we can print blueprints, posters, banners, and other large format projects with high-quality results."
   },
   {
-    question: "How do I schedule a roof inspection?",
-    answer: "Simply contact us via phone, email, or our online form. We'll schedule a convenient time to inspect your roof."
+    question: "Can you handle rush orders?",
+    answer: "We try to accommodate rush orders whenever possible. Contact us to confirm availability and timelines."
   },
   {
-    question: "Do you offer financing options?",
-    answer: "Yes, we provide flexible financing options to make your roofing or home repair project affordable."
+    question: "Do you provide business cards and stationery?",
+    answer: "Yes, we offer full business essentials including business cards, letterheads, envelopes, and more."
   },
   {
-    question: "What safety measures do your crews follow?",
-    answer: "Our team follows strict OSHA safety guidelines, uses proper equipment, and ensures a clean and safe worksite."
+    question: "Can I pick up my order in-store?",
+    answer: "Absolutely. Orders can be picked up at either our Bedford or Paoli locations once ready."
   },
   {
-    question: "Can you repair leaks on flat roofs?",
-    answer: "Yes, we specialize in repairing flat roofs, including commercial and residential properties, using durable waterproof materials."
+    question: "Do you offer custom signs and banners?",
+    answer: "Yes, we create custom signs, banners, and vinyl graphics for events, promotions, and businesses."
   },
   {
-    question: "How often should I have my roof inspected?",
-    answer: "We recommend a professional inspection at least once a year and after any major storm to prevent small issues from becoming costly repairs."
+    question: "How can I pay for services?",
+    answer: "We accept cash, credit/debit cards, and other local payment methods. Contact us for details on large orders."
   },
   {
-    question: "What sets your company apart from other roofing contractors?",
-    answer: "We focus on quality workmanship, timely communication, fair pricing, and customer satisfaction. Our team is licensed, insured, and experienced."
+    question: "Do you offer photo restoration?",
+    answer: "Yes, we can restore old or damaged photos to preserve memories in high-quality prints."
+  },
+  {
+    question: "Is there parking available at your locations?",
+    answer: "Yes, both our Bedford and Paoli stores have convenient parking for customers."
   },
 ];
 
@@ -78,7 +82,9 @@ const FAQPage = () => {
   return (
     <Container className="mt-16 mb-32">
       <h2 className="text-3xl font-semibold mb-10 text-center">FAQs</h2>
-      <div className="max-w-3xl mx-auto space-y-5">
+
+      {/* 2-column layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {faqs.map((faq, index) => (
           <div
             key={index}
@@ -99,9 +105,7 @@ const FAQPage = () => {
           </div>
         ))}
       </div>
-                <QuickEstimate />
     </Container>
-    
   );
 };
 
